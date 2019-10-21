@@ -1,0 +1,32 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>用户列表</title>
+	<link rel="stylesheet" href="{% static 'site.css' %}"  type="text/css">
+</head>
+<body>
+	<form action="" method="post">{% csrf_token %}
+
+	</form>
+	{{ data }}
+	<br>
+	<br>
+	<table>	
+		<tr>
+			<td>用户名</td>
+			<td>密    码</td>
+			<td>操    作</td>
+		</tr>	
+		{% for person in data %}
+		<tr>
+			<td>{{ person.username }}</td>
+			<td>{{ person.password }}</td>
+			<td><a href="/user/delete/{{ person.id }}">删除</a></td>
+		</tr>
+
+		{% endfor%}
+	</table>
+</body>
+</html>
